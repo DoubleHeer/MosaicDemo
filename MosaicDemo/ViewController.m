@@ -8,8 +8,9 @@
 
 #import "ViewController.h"
 #import "EQImageEditorViewController.h"
+#import "UIImage+fixOrientation.h"
 
-@interface ViewController ()<EQImageEditorDelegate>
+@interface ViewController ()<EQImageEditorDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 @property (nonatomic,strong) UIImageView *imageview1;
 
 @end
@@ -31,14 +32,53 @@
     button.frame = CGRectMake(50, 250, 100, 40);
     button.backgroundColor = [UIColor redColor];
     [self.view addSubview:button];
+    
+    UIButton *button1 = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button1 addTarget: self action:@selector(chooseImage:) forControlEvents:UIControlEventTouchUpInside];
+    button1.frame = CGRectMake(200, 250, 100, 40);
+    button1.backgroundColor = [UIColor redColor];
+    [self.view addSubview:button1];
 }
 
+-(void)chooseImage:(UIButton *)sender {
+    //相册是否允许访问
+    if(![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        
+        //        return;
+    }
+    
+    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+    imagePickerController.delegate = self;
+    imagePickerController.allowsEditing = NO;
+    imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    [self presentModalViewController:imagePickerController animated:YES];
+}
 -(void)editImageView:(UIButton *)sender {
     EQImageEditorViewController * ctrler = [[EQImageEditorViewController alloc]init];
     ctrler.drawingImg = self.imageview1.image;
   
     ctrler.delegate = self;
     [self presentViewController:ctrler animated:YES completion:nil];
+}
+
+#pragma mark - UIImagePickerController
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    
+    [picker dismissModalViewControllerAnimated:YES];
+    
+    [self.imageview1 setImage:[[info objectForKey:UIImagePickerControllerOriginalImage]fixOrientation]];
+    
+}
+
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    
+    [self dismissModalViewControllerAnimated:YES];
+    
 }
 
 #pragma -mark EQImageEditorDelegate

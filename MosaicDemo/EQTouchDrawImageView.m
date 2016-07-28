@@ -69,7 +69,7 @@
         CGRect rects = CGRectMake(self.currentPoint.x < self.firstPoint.x ?self.currentPoint.x:self.firstPoint.x, self.currentPoint.y < self.firstPoint.y ? self.currentPoint.y:self.firstPoint.y, fabs(self.firstPoint.x - self.currentPoint.x),fabs( self.firstPoint.y - self.currentPoint.y));
         
         UIImage *img = [self getImageFromImageWithRect:rects];
-        UIGraphicsPushContext( context );
+        UIGraphicsPushContext(context );
         [img drawInRect:CGRectMake(rects.origin.x, rects.origin.y, rects.size.width, rects.size.height)];
         UIGraphicsPopContext();
     }
@@ -209,7 +209,7 @@
 
 -(void)mosaicImageByImage:(UIImage *)image {
     self.cutImage = [UIImage new];
-    self.cutImage = [self transToMosaicImage:image blockLevel:10];
+    self.cutImage = [self transToMosaicImage:image blockLevel:15];
     self.cutImage = [self image:self.cutImage byScalingToSize:self.frame.size];
     
 }
