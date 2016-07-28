@@ -44,7 +44,7 @@
     //相册是否允许访问
     if(![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         
-        //        return;
+        return;
     }
     
     UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];

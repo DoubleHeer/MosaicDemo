@@ -100,8 +100,6 @@
 				1F833A761D46FB2C00602A39 /* AppDelegate.m */,
 				1F833A781D46FB2C00602A39 /* ViewController.h */,
 				1F833A791D46FB2C00602A39 /* ViewController.m */,
-				1FC6DFDF1D49FDD8002F9A2A /* UIImage+fixOrientation.h */,
-				1FC6DFE01D49FDD8002F9A2A /* UIImage+fixOrientation.m */,
 				1FC6DFDE1D49B9C7002F9A2A /* mosaic */,
 				1FC6DFDD1D49AD8A002F9A2A /* image */,
 				1F833A7B1D46FB2C00602A39 /* Main.storyboard */,
@@ -138,6 +136,8 @@
 		1FC6DFDE1D49B9C7002F9A2A /* mosaic */ = {
 			isa = PBXGroup;
 			children = (
+				1FC6DFDF1D49FDD8002F9A2A /* UIImage+fixOrientation.h */,
+				1FC6DFE01D49FDD8002F9A2A /* UIImage+fixOrientation.m */,
 				1F833A8E1D4704DC00602A39 /* EQImageEditorViewController.h */,
 				1F833A8F1D4704DC00602A39 /* EQImageEditorViewController.m */,
 				1F833A901D4704DC00602A39 /* EQImageEditorViewController.xib */,

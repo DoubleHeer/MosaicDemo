@@ -48,16 +48,7 @@
     self.newdrawTool = [[EQNewDrawTool alloc]init];
     self.newdrawTool.delegate = self;
     [self.view addSubview:self.newdrawTool];
-    //    添加画板
-    // self.eqDrawTool = [[EQDrawTool alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width - 150, [UIScreen mainScreen].bounds.size.height - 150, 150,150)];
-    
-    //    self.drawTransform = self.eqDrawTool.transform;
-    //    self.eqDrawTool.delegate = self;
-    //    self.eqDrawTool.selectImagview.delegate = self;
-    //    [self.view addSubview:self.eqDrawTool];
-    //    [self.view bringSubviewToFront:self.eqDrawTool];
-    
-    
+
     drawingView.isEndEditing = NO;
     [self addTapEventWithView:drawingView];
     //开始为画线模式，无法滚动
@@ -70,15 +61,6 @@
     self.editScrollView.maximumZoomScale=4.0;
     //设置最小伸缩比例
     self.editScrollView.minimumZoomScale=1;
-    //    self.editView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.editScroll.frame.size.width, self.editScroll.frame.size.height)];
-    //    UIView * v1 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
-    //    [v1 setBackgroundColor:[UIColor blackColor]];
-    //    [self.editView addSubview:v1];
-    
-    //    [self.editView setBackgroundColor:[UIColor redColor]];
-    //    [self.editScroll addSubview:self.editView];
-    
-    
     
     self.strokeColorArr = [[NSMutableArray alloc]init];
     
@@ -124,14 +106,12 @@
         [self.btnOk setTitle:self.btnOkTitle forState:UIControlStateNormal];
     }
     self.isResize = NO;
-    //    self.drawColor = self.strokeColorArr[0] ;
-    //    self.strokeWidth = 3.0f;
     if (!self.drawingImg) {
         return;
     }
     
 }
-
+#pragma mark - 双击事件
 -(void)addTapEventWithView:(UIView *)view {
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(changeDrawingToolState:)];
     [tap setNumberOfTapsRequired:2];
@@ -184,10 +164,7 @@
     
     self.isResize = YES;
 }
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 
 #pragma mark 调整画布和image的大小
 -(void) resizeDrawImageView:(UIImage*)img {
@@ -233,12 +210,6 @@
     [self.drawBgImageView setFrame:CGRectMake(x, y, w, h)];
     [drawingView setFrame:CGRectMake(x, y, w, h)];
     self.editScrollView.contentSize = CGSizeMake(w, h);
-    
-    //    [drawingView setBackgroundColor:[UIColor redColor]];
-    //    [self.editView setFrame:CGRectMake(x, y + 64, w, h)];
-    
-    //    [self.view sendSubviewToBack:self.editScroll];
-    //    [self.view bringSubviewToFront:drawingView];
     
 }
 #pragma -mark button
@@ -313,20 +284,7 @@
         
         float scaleW = drawingView.scaleW;
         float scaleH = drawingView.scaleH;
-        //        for (EQDrawingPath *path in drawPaths) {
-        //            if ([path color].a == 0) {
-        //                CGContextSetBlendMode(context, kCGBlendModeSourceIn);
-        //            } else {
-        //                CGContextSetBlendMode(context,kCGBlendModeNormal);
-        //            }
-        //            CGContextSetRGBStrokeColor(context,path.color.r,path.color.g,path.color.b,path.color.a);
-        //            CGContextBeginPath(context);
-        //            CGContextMoveToPoint(context, path.begin.x * scaleW, path.begin.y * scaleH);
-        //            CGContextAddLineToPoint(context, path.end.x * scaleW, path.end.y * scaleH);
-        //            CGContextStrokePath(context);
-        //
-        //        }
-        
+      
         CGAffineTransform t = drawingView.transform;
         CGAffineTransform newTransform = CGAffineTransformScale(t,scaleW,scaleH);
         [drawingView setTransform:newTransform];
