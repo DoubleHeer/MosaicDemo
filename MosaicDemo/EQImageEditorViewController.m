@@ -59,7 +59,7 @@
     
     
     drawingView.isEndEditing = NO;
-    
+    [self addTapEventWithView:drawingView];
     //开始为画线模式，无法滚动
     [self.editScrollView setScrollEnabled:NO];
     
@@ -131,6 +131,28 @@
     }
     
 }
+
+-(void)addTapEventWithView:(UIView *)view {
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(changeDrawingToolState:)];
+    [tap setNumberOfTapsRequired:2];
+    view.userInteractionEnabled = YES;
+    [view addGestureRecognizer:tap];
+    
+}
+
+-(void)changeDrawingToolState:(UITapGestureRecognizer *)sender {
+    
+    if(self.newdrawTool.frame.origin.y>[UIScreen mainScreen].bounds.size.height-60) {
+        [UIView animateWithDuration:0.5 animations:^{
+            self.newdrawTool.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height-60, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
+        }];
+    } else {
+        [UIView animateWithDuration:0.5 animations:^{
+            self.newdrawTool.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
+        }];
+    }
+    
+}
 -(UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
 {
     if (drawingView.isEndEditing)
@@ -142,6 +164,7 @@
     
     
 }
+
 
 
 -(void)viewDidAppear:(BOOL)animated {
