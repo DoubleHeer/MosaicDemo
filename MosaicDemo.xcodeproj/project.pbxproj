@@ -97,17 +97,7 @@
 				1F833A761D46FB2C00602A39 /* AppDelegate.m */,
 				1F833A781D46FB2C00602A39 /* ViewController.h */,
 				1F833A791D46FB2C00602A39 /* ViewController.m */,
-				1F833A8E1D4704DC00602A39 /* EQImageEditorViewController.h */,
-				1F833A8F1D4704DC00602A39 /* EQImageEditorViewController.m */,
-				1F833A901D4704DC00602A39 /* EQImageEditorViewController.xib */,
-				1F833A911D4704DC00602A39 /* EQRGBColorInfo.h */,
-				1F833A921D4704DC00602A39 /* EQRGBColorInfo.m */,
-				1F833A931D4704DC00602A39 /* EQDrawingPath.h */,
-				1F833A941D4704DC00602A39 /* EQDrawingPath.m */,
-				1F833A951D4704DC00602A39 /* EQTouchDrawImageView.h */,
-				1F833A961D4704DC00602A39 /* EQTouchDrawImageView.m */,
-				1F833AC71D48A40700602A39 /* EQNewDrawTool.h */,
-				1F833AC81D48A40700602A39 /* EQNewDrawTool.m */,
+				1FC6DFDE1D49B9C7002F9A2A /* mosaic */,
 				1FC6DFDD1D49AD8A002F9A2A /* image */,
 				1F833A7B1D46FB2C00602A39 /* Main.storyboard */,
 				1F833A8C1D46FBF100602A39 /* aaa.jpg */,
@@ -138,6 +128,24 @@
 				1F833AB01D470B0B00602A39 /* edit_img_blue.png */,
 			);
 			name = image;
+			sourceTree = "<group>";
+		};
+		1FC6DFDE1D49B9C7002F9A2A /* mosaic */ = {
+			isa = PBXGroup;
+			children = (
+				1F833A8E1D4704DC00602A39 /* EQImageEditorViewController.h */,
+				1F833A8F1D4704DC00602A39 /* EQImageEditorViewController.m */,
+				1F833A901D4704DC00602A39 /* EQImageEditorViewController.xib */,
+				1F833A911D4704DC00602A39 /* EQRGBColorInfo.h */,
+				1F833A921D4704DC00602A39 /* EQRGBColorInfo.m */,
+				1F833A931D4704DC00602A39 /* EQDrawingPath.h */,
+				1F833A941D4704DC00602A39 /* EQDrawingPath.m */,
+				1F833A951D4704DC00602A39 /* EQTouchDrawImageView.h */,
+				1F833A961D4704DC00602A39 /* EQTouchDrawImageView.m */,
+				1F833AC71D48A40700602A39 /* EQNewDrawTool.h */,
+				1F833AC81D48A40700602A39 /* EQNewDrawTool.m */,
+			);
+			name = mosaic;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
